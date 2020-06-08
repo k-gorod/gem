@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+#preprocessor
+prepros.config
+
 # production
 /build
 
