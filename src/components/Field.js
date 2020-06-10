@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
 import Cell from './Cell'
-
+import cellNumbers from './cellNumbers'
 
 class Field extends Component{
     constructor(props){
         super(props)
-        this.array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        this.state = {
+            fieldType: props.fieldType
+        }
+        
+    }
+    selectListChanging(changing){
+        this.setState({
+            fieldType : changing?changing:this.props.fieldType
+        })
+    }
+    createField(){
+        let ArrOfCells = cellNumbers(this.state.fieldType).map(numb => 
+            <Cell number = {numb} key = {numb} ></Cell>
+        )
+        return (
+            <div className='field'>
+                {ArrOfCells}
+            </div>
+        );
     }
     render (){
-        return (
-            <div className="field">
-               {this.array.map(num => <Cell number={num} key={num}></Cell>)}
-            </div>
-        )
+        return this.createField();
     } 
-        
-    
-    
-    
 }
 
 export default Field;

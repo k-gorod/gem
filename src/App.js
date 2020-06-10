@@ -3,7 +3,7 @@ import Field from './components/Field'
 
 function App() {
     return (
-        <Field/>
+        <Field fieldType={4}/>
     )
 }
 export default App;
