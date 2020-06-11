@@ -20,7 +20,7 @@ class cellActions{
     }
     errorCell(){
         const err = document.createElement('div');
-        err.setAttribute('class','field__cell__inside-error');
+        err.setAttribute('class','field__cell__inside field__cell__inside-error');
         this.activeCell.prepend(err);
         this.display.cellErrorAnimation(err)
         .then(()=>{
