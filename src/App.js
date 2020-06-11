@@ -5,7 +5,7 @@ import cellActions from './actions/cellActions'
 function App() {
     window.onload = () => {
         document.getElementsByClassName('field')[0].addEventListener('mousedown',(e)=>{
-            var action = new cellActions(e.target);
+            var action = new cellActions(e.target.parentElement);
             action.clickHandler();
         })
         

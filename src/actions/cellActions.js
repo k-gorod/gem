@@ -1,27 +1,37 @@
 import Display from "../display";
 
 class cellActions{
-    constructor(cell){
-        this.cell=cell;
+    constructor(activeCell){
+        this.activeCell=activeCell;
         this.display = new Display();
+        this.voidCell = document.getElementsByClassName('void')[0];
     }
     clickHandler(){
-        this.checkPosition()?this.moveCell(this.cell):this.cellError();
+        this.checkPosition()?this.moveCell(this.activeCell):this.cellError();
     }
     moveCell(){
-    this.display.cellMotion(this.cell)
-    .then(()=>{
-        console.log('here')
-    })
-        
-            
-        
-        
+        this.display.cellMotion(this.activeCell,this.checkPosition())
+        .then(()=>{
+            console.log('here')
+        })
     }
     checkPosition(){
-        let boolean=true;
-        //----
-        return boolean;
+        let action='';
+        if(this.voidCell.id[1]===this.activeCell.id[1]){
+            action = 
+            this.voidCell.id[3]===Number(this.activeCell.id[3])-1+""?"up":
+            this.voidCell.id[3]===Number(this.activeCell.id[3])+1+""?"down":
+            null;
+        }else
+        if(this.voidCell.id[3]===this.activeCell.id[3]){
+            action = 
+            this.voidCell.id[1]===Number(this.activeCell.id[1])-1+""?"left":
+            this.voidCell.id[1]===Number(this.activeCell.id[1])+1+""?"right":
+            null;
+        }else{
+            action=null;
+        }
+        return action;
     }
 }
 export default cellActions;
