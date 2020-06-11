@@ -12,7 +12,10 @@ class cellActions{
     moveCell(){
         this.display.cellMotion(this.activeCell,this.checkPosition())
         .then(()=>{
-            console.log('here')
+            const newVoidId = this.activeCell.id;
+            this.activeCell.id = this.voidCell.id;
+            this.activeCell.removeAttribute('style');
+            this.voidCell.id = newVoidId;
         })
     }
     checkPosition(){
@@ -31,6 +34,7 @@ class cellActions{
         }else{
             action=null;
         }
+        console.log(this.voidCell,this.activeCell)
         return action;
     }
 }
