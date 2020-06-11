@@ -10,15 +10,28 @@ class Field extends Component{
         }
         
     }
+
     selectListChanging(changing){
         this.setState({
             fieldType : changing?changing:this.props.fieldType
         })
     }
+
     createField(){
-        let ArrOfCells = cellNumbers(this.state.fieldType).map(numb => 
-            <Cell number = {numb} key = {numb} ></Cell>
-        )
+        let ArrOfCells = cellNumbers(this.state.fieldType);
+        
+        for(let i = 0; i < ArrOfCells.length;i++){
+            for(let n = 0; n < ArrOfCells[i].length;n++){
+                ArrOfCells[i][n]=
+                <Cell
+                    number = {ArrOfCells[i][n]} 
+                    key = {i*this.state.fieldType+n+1} 
+                    id={'c'+(n+1)+'-'+(i+1)}
+                >
+                    
+                </Cell>;
+            }
+        }
         return (
             <div className='field'>
                 {ArrOfCells}
