@@ -5,14 +5,12 @@ import cellActions from './actions/cellActions'
 function App() {
     window.onload = () => {
         document.getElementsByClassName('field')[0].addEventListener('mousedown',(e)=>{
-            var action = new cellActions(e.target.parentElement);
-            action.clickHandler();
+            if(e.target.classList.contains('field__cell__inside')){
+                var action = new cellActions(e.target.parentElement);
+                action.clickHandler();
+            }
         })
-        
-
     }
-        
-    
     return (
         <Field fieldType={4}/>
     )

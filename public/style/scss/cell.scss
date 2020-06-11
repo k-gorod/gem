@@ -5,8 +5,10 @@
     font-family: cursive;
     font-size: 50px;
     color:#fff;
+    position: relative;
     &__inside{
         display: grid;
+        position: absolute;
         justify-content: center;
         align-items: center;
         align-self: center;
@@ -14,7 +16,25 @@
         background: #000;
         height: 95%;
         width:95%;
+        z-index: 1;
         border-radius: 10px;
         cursor: pointer;
+        &-error{
+            position: absolute;
+            width: 95%;
+            height: 95%;
+            display:grid;
+            align-self: center;
+            justify-self: center;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            z-index: 2;
+            opacity:0; 
+            cursor: help;
+            box-shadow:  
+            inset 
+                0 0 50px 10px white,
+                0 0 20px 10px white;
+        }
     }
 }

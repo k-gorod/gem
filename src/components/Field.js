@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cell from './Cell'
-import cellNumbers from './cellNumbers'
+import cellNumbers from '../actions/cellNumbers'
 
 class Field extends Component{
     constructor(props){

@@ -3,19 +3,28 @@ import Display from "../display";
 class cellActions{
     constructor(activeCell){
         this.activeCell=activeCell;
-        this.display = new Display();
+        this.display = new Display(activeCell);
         this.voidCell = document.getElementsByClassName('void')[0];
     }
     clickHandler(){
-        this.checkPosition()?this.moveCell(this.activeCell):this.cellError();
+        this.checkPosition()?this.moveCell():this.errorCell();
     }
     moveCell(){
-        this.display.cellMotion(this.activeCell,this.checkPosition())
+        this.display.cellMotion(this.checkPosition())
         .then(()=>{
             const newVoidId = this.activeCell.id;
             this.activeCell.id = this.voidCell.id;
             this.activeCell.removeAttribute('style');
             this.voidCell.id = newVoidId;
+        })
+    }
+    errorCell(){
+        const err = document.createElement('div');
+        err.setAttribute('class','field__cell__inside-error');
+        this.activeCell.prepend(err);
+        this.display.cellErrorAnimation(err)
+        .then(()=>{
+            err.remove();
         })
     }
     checkPosition(){
@@ -34,7 +43,6 @@ class cellActions{
         }else{
             action=null;
         }
-        console.log(this.voidCell,this.activeCell)
         return action;
     }
 }
