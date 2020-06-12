@@ -28,15 +28,14 @@ class Field extends Component{
                     key = {i*this.state.fieldType+n+1} 
                     id={'c'+(n+1)+'-'+(i+1)}
                 >
-                    
                 </Cell>;
             }
         }
         return (
-            <div className='field'>
+            <div className='field' style={{'gridTemplateColumns':('repeat('+this.state.fieldType+',1fr)')}}>
                 {ArrOfCells}
             </div>
-        );
+        )
     }
     render (){
         return this.createField();

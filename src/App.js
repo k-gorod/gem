@@ -12,7 +12,7 @@ function App() {
         })
     }
     return (
-        <Field fieldType={4}/>
+        <Field fieldType={6}/>
     )
 }
 export default App;
